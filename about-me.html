@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ronell De Ebora — Profile</title>
+    <link rel="stylesheet" href="animations.css">
+    
+    <style>
+        /* EXTRA ISOLATED ENGINE - PARA IWAS RIGID OVERLAPS */
+        html, body {
+            background-color: #000000 !important;
+            color: #ffffff !important;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            height: auto !important; /* Pinipilit na maging flexible ang taas */
+            min-height: 100vh !important;
+        }
+
+        .prof-wrapper {
+            max-width: 1100px !important;
+            margin: 0 auto !important;
+            padding: 100px 6% !important;
+            display: block !important;
+            height: auto !important;
+        }
+
+        .prof-back-nav {
+            margin-bottom: 60px !important;
+            display: block !important;
+            height: auto !important;
+        }
+
+        .prof-back-link {
+            color: rgba(255, 255, 255, 0.4) !important;
+            text-decoration: none !important;
+            font-size: 13px !important;
+            font-family: monospace !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.08em !important;
+        }
+
+        /* DYNAMIC COLUMN ENGINE */
+        .prof-main-grid {
+            display: flex !important;
+            flex-direction: row !important;
+            gap: 80px !important;
+            align-items: flex-start !important;
+            justify-content: space-between !important;
+            height: auto !important;
+        }
+
+        /* LEFT SIDE (Personal Card) */
+        .prof-left-panel {
+            flex: 1 !important;
+            max-width: 350px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 32px !important;
+            height: auto !important;
+        }
+
+        .prof-main-name {
+            font-size: clamp(2rem, 3.5vw, 3.5rem) !important;
+            font-weight: 800 !important;
+            letter-spacing: -0.03em !important;
+            line-height: 1.1 !important;
+            margin: 0 !important;
+            color: #ffffff !important;
+            height: auto !important;
+        }
+
+        .prof-meta-box {
+            border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+            padding-top: 24px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 24px !important; /* Malawak na pagitan para iwas dikit */
+            height: auto !important;
+        }
+
+        .prof-meta-row {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 8px !important;
+            height: auto !important;
+        }
+
+        .prof-meta-label {
+            font-size: 11px !important;
+            font-family: monospace !important;
+            text-transform: uppercase !important;
+            color: rgba(255, 255, 255, 0.4) !important;
+            letter-spacing: 0.05em !important;
+        }
+
+        .prof-meta-value {
+            font-size: 15px !important;
+            font-weight: 400 !important;
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+
+        /* RIGHT SIDE (Work History) */
+        .prof-right-panel {
+            flex: 1.5 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 54px !important; /* Malalaking layo bawat kumpanya */
+            height: auto !important;
+        }
+
+        .prof-headline {
+            font-size: 11px !important;
+            font-family: monospace !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.12em !important;
+            color: rgba(255, 255, 255, 0.4) !important;
+            margin: 0 0 10px 0 !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            padding-bottom: 16px !important;
+            height: auto !important;
+        }
+
+        .prof-job-card {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 16px !important;
+            padding-bottom: 32px !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+            height: auto !important;
+        }
+
+        .prof-job-card:last-child {
+            border-bottom: none !important;
+        }
+
+        .prof-job-header {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            gap: 16px !important;
+            height: auto !important;
+        }
+
+        .prof-job-title {
+            font-size: 20px !important;
+            font-weight: 600 !important;
+            letter-spacing: -0.01em !important;
+            line-height: 1.3 !important;
+            margin: 0 !important;
+            color: #ffffff !important;
+        }
+
+        .prof-job-duration {
+            font-size: 11px !important;
+            font-family: monospace !important;
+            background-color: rgba(255, 255, 255, 0.08) !important;
+            padding: 4px 12px !important;
+            border-radius: 4px !important;
+            color: rgba(255, 255, 255, 0.7) !important;
+            white-space: nowrap !important;
+        }
+
+        /* SEPARATE CLEAN BLOCKS FOR BULLETS */
+        .prof-bullet-container {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 14px !important; /* Ligtas at malawak na espasyo bawat pangungusap */
+            padding: 0 !important;
+            margin: 0 !important;
+            height: auto !important;
+        }
+
+        .prof-bullet-item {
+            font-size: 14px !important;
+            line-height: 1.6 !important;
+            color: rgba(255, 255, 255, 0.6) !important;
+            padding-left: 16px !important;
+            position: relative !important;
+            display: block !important;
+            height: auto !important;
+        }
+
+        /* Minimal Indicator Square */
+        .prof-bullet-item::before {
+            content: "" !important;
+            position: absolute !important;
+            left: 0 !important;
+            top: 9px !important;
+            width: 4px !important;
+            height: 4px !important;
+            background-color: rgba(255, 255, 255, 0.3) !important;
+        }
+
+        /* MOBILE FIXES */
+        @media (max-width: 800px) {
+            .prof-main-grid {
+                flex-direction: column !important;
+                gap: 50px !important;
+            }
+            .prof-left-panel {
+                max-width: 100% !important;
+            }
+            .prof-job-header {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 6px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="prof-wrapper">
+        <div class="prof-back-nav reveal-text">
+            <a href="index.html" class="prof-back-link">← Return to Studio</a>
+        </div>
+
+        <div class="prof-main-grid">
+            <div class="prof-left-panel reveal-text delay">
+                <h1 class="prof-main-name">Ronell De Ebora</h1>
+                
+                <div class="prof-meta-box">
+                    <div class="prof-meta-row">
+                        <span class="prof-meta-label">Born</span>
+                        <span class="prof-meta-value">June 26, 2005</span>
+                    </div>
+                    <div class="prof-meta-row">
+                        <span class="prof-meta-label">Focus</span>
+                        <span class="prof-meta-value">Independent Creative & Service Professional</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prof-right-panel reveal-text delay">
+                <div class="prof-headline">Professional History</div>
+
+                <div class="prof-job-card">
+                    <div class="prof-job-header">
+                        <h2 class="prof-job-title">Sales Associate / Cashier — 7-Eleven</h2>
+                        <span class="prof-job-duration">1 Year</span>
+                    </div>
+                    <div class="prof-bullet-container">
+                        <div class="prof-bullet-item">Managed cashier transactions and provided customer assistance with high operational reliability.</div>
+                        <div class="prof-bullet-item">Restocked critical product frameworks and ensured proper store structural organization.</div>
+                        <div class="prof-bullet-item">Maintained strict precision and accuracy in inventory handling and daily storefront operations.</div>
+                    </div>
+                </div>
+
+                <div class="prof-job-card">
+                    <div class="prof-job-header">
+                        <h2 class="prof-job-title">Store Assistant — Watsons</h2>
+                        <span class="prof-job-duration">6 Months</span>
+                    </div>
+                    <div class="prof-bullet-container">
+                        <div class="prof-bullet-item">Assisted customers with nuanced product inquiries and customized purchase flows.</div>
+                        <div class="prof-bullet-item">Organized premium shelves, meticulously monitored stock inventory, and preserved pristine store cleanliness.</div>
+                        <div class="prof-bullet-item">Supported core daily store operations and executed frontline cashier duties.</div>
+                    </div>
+                </div>
+
+                <div class="prof-job-card">
+                    <div class="prof-job-header">
+                        <h2 class="prof-job-title">Service Crew — KFC</h2>
+                        <span class="prof-job-duration">6 Months</span>
+                    </div>
+                    <div class="prof-bullet-container">
+                        <div class="prof-bullet-item">Assisted high-volume customer streams with orders and integrated friendly customer service protocols.</div>
+                        <div class="prof-bullet-item">Handled strict food preparation pipelines, active cashiering, and overall workspace sterilization.</div>
+                        <div class="prof-bullet-item">Worked efficiently and maintained speed execution in a fast-paced team environment.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

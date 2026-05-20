@@ -37,6 +37,8 @@ body{
     transform:translateY(-100%);
 }
 
+
+
 /* LOGO (Nelyr Ebora) hover zoom */
 .logo-link {
     display: inline-block;
@@ -109,12 +111,15 @@ body{
 
 /* HERO */
 
-.hero{
-    height:100vh;
-    position:relative;
-    overflow:hidden;
-    display:flex;
-    align-items:flex-end;
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh; 
+    min-height: 600px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-image{
@@ -146,6 +151,20 @@ body{
     margin-bottom:120px;
 }
 
+.ticker-section {
+    position: relative;
+    width: 100%;
+    background-color: #ffffff;
+    
+    /* 🟢 HETO ANG ACCELERATOR: */
+    /* Kung may negative margin ka rito tulad ng margin-top: -50px, BURAHIN MO YUN. */
+    margin-top: 0 !important; 
+    
+    /* Naglalagay tayo ng hininga sa taas para lumubog ang white border line */
+    padding-top: 60px; 
+    padding-bottom: 120px;
+}
+
 .reveal-text{
     font-size:clamp(3rem,8vw,8rem);
     line-height:.9;
@@ -153,30 +172,43 @@ body{
     font-weight:700;
 }
 
-/* TICKER */
-
-.ticker-section{
-    background:#fff;
-    color:#000;
-    padding:80px 0;
-    overflow:hidden;
-    text-align:center;
+/* TIKER SECTION - INAYOS ANG GAP */
+.ticker-section {
+    background-color: #ffffff; /* O kung ano man ang kulay ng puting area mo */
+    width: 100%;
+    
+    /* 🔴 DITO MO PALUTANGIN ANG LOGOS */
+    /* Nilagyan natin ng malaking space sa ibaba (bottom padding) */
+    /* para lumayo sa itim na box sa ilalim. */
+    padding: 80px 0 120px 0; /* (Taas, Kanan, Ibaba, Kaliwa) */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
 }
 
-.ticker-section p{
-    margin-bottom:40px;
-    opacity:.5;
+/* 🟢 DAGDAG: TITLE TEXT SPACE */
+.ticker-section p {
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0;
+    
+    /* Dito natin ilalayo ang text sa logos sa ilalim niya */
+    margin-bottom: 60px; 
 }
 
-.ticker-wrapper-track{
-    overflow:hidden;
-}
-
-.ticker-container{
-    display:flex;
-    gap:30px;
-    width:max-content;
-    animation:continuousTicker 18s linear infinite;
+/* THE WRAPPER CONTAINER */
+.ticker-wrapper {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    
+    /* Nilagyan natin ng saktong vertical space para makahinga ang logos */
+    padding: 30px 0; 
 }
 
 .skill-card{
@@ -660,6 +692,13 @@ body{
     z-index:5;
 }
 
+/* ADDING COMFORTABLE SPACE ABOVE ACHIEVEMENTS */
+.achievements-section {
+    padding-top: 140px;    /* Nagbibigay ng malaking espasyo sa loob ng section bago mag-text */
+    margin-top: 60px;      /* Karagdagang puwang sa labas para siguradong hiwalay sa video area */
+    background-color: #000000;
+}
+
 /* OVERLAY ANIMATION */
 .project-overlay {
     opacity: 0;
@@ -702,7 +741,7 @@ body{
     width: 100%;
     box-sizing: border-box;
     position: relative;
-    z-index: 20; /* Tinitiyak na nasa ibabaw ito ng card overlap layers */
+    z-index: 20; 
 }
 
 .footer-grid {
@@ -798,104 +837,6 @@ body{
     user-select: none;
 }
 
-/* ======================================================= */
-/* SMOOTH TERMS & CONDITIONS POP-UP ENGINE (MODAL)         */
-/* ======================================================= */
-.terms-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px); /* Blur effect sa likod para sa premium look */
-    z-index: 10000; /* Tinitiyak na ito ang pinaka-itaas sa buong site */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.terms-modal-overlay.modal-active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.terms-modal-box {
-    background-color: #0b0b0b;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    width: 90%;
-    max-width: 650px;
-    border-radius: 16px;
-    overflow: hidden;
-    transform: scale(0.95) translateY(20px);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.terms-modal-overlay.modal-active .terms-modal-box {
-    transform: scale(1) translateY(0);
-}
-
-.modal-header {
-    padding: 24px 30px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.modal-header h3 {
-    font-size: 20px;
-    font-weight: 600;
-    margin: 0;
-    letter-spacing: -0.02em;
-}
-
-.modal-close-icon {
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 32px;
-    line-height: 1;
-    cursor: none !important; /* Sinisiguro na sumusunod sa custom cursor mo */
-    transition: color 0.2s;
-}
-
-.modal-close-icon:hover {
-    color: #ffffff;
-}
-
-.modal-scroll-body {
-    padding: 30px;
-    max-height: 450px;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
-}
-
-/* Mga Detalye sa Loob ng Modal Content */
-.legal-date {
-    font-size: 12px;
-    font-family: monospace;
-    color: rgba(255, 255, 255, 0.4);
-    margin-bottom: 24px;
-}
-
-.modal-scroll-body h4 {
-    font-size: 16px;
-    font-weight: 600;
-    margin: 24px 0 8px 0;
-    color: #ffffff;
-}
-
-.modal-scroll-body p {
-    font-size: 14px;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 16px;
-}
 
 /* RESPONSIVE FOOTER SETUP */
 @media (max-width: 850px) {
@@ -1136,3 +1077,27 @@ body{
 html, body {
     overscroll-behavior: auto;
 }
+
+/* I-RE-ALIGN ANG LINK TAG PARA SUMUNOD SA ORIHINAL MONG ABOUT LAYOUT */
+.about-image-link {
+    display: inline-block; /* O kaya ay gawin mong block depende sa pwesto nya dati */
+    width: 100%;           /* Sinisigurado nitong sakop nya ang buong sukat ng image */
+    max-width: 500px;      /* Baguhin mo ang sukat na ito base sa kung gaano kalaki ang pic mo dati */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* KONEKTA SA EFFECT NG IMAGE HOVER */
+.about-image-link img {
+    width: 100%;           /* Pinipilit ang imahe na sumunod sa container nya */
+    height: auto;
+    object-fit: cover;
+    transition: filter 0.5s cubic-bezier(.16,1,.3,1), 
+                transform 0.5s cubic-bezier(.16,1,.3,1);
+}
+
+.about-image-link:hover img {
+    transform: scale(1.02);
+    filter: brightness(1.15);
+}
+
