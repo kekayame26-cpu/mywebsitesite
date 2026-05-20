@@ -110,16 +110,18 @@ body{
 }
 
 /* HERO */
-
 .hero {
     position: relative;
     width: 100%;
-    height: 100vh; 
-    min-height: 600px;
+    /* 🔴 Gagawa nitong saktong 110% ng taas ng screen ng user para mas maluwag */
+    height: 110vh; 
+    min-height: 700px;
+    background-color: #000000;
     overflow: hidden;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-end; /* I-align ang lahat ng content sa pinaka-ibaba */
+    align-items: flex-start; /* I-align ang lahat sa kaliwa */
 }
 
 .hero-image{
@@ -144,25 +146,37 @@ body{
     pointer-events:none;
 }
 
-.hero-title-wrapper{
-    position:relative;
-    z-index:2;
-    margin-left:5%;
-    margin-bottom:120px;
+.hero-title-wrapper {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    /* 🟢 HETO ANG ACCELERATOR: */
+    /* Hihilahin natin paitaas ang text block gamit ang margin-top para pumatong sa hero image dulo */
+    margin-top: -60px; /* Bawasan ito mula -80px o -100px para mas bumaba */
+    
+    /* Naglalagay tayo ng hininga sa taas para lumubog ang text block */
+    padding-top: 40px; 
+    padding-bottom: 20px;
+    z-index: 10;
 }
 
 .ticker-section {
     position: relative;
     width: 100%;
-    background-color: #ffffff;
+    background-color: #ffffff; /* Isang solido at malinis na white base lang */
     
-    /* 🟢 HETO ANG ACCELERATOR: */
-    /* Kung may negative margin ka rito tulad ng margin-top: -50px, BURAHIN MO YUN. */
+    /* Dito natin gagawin ang unang swabe at premium na curve line */
+    border-radius: 40px 40px 0 0; 
+    
+    /* Kinokontrol ang agwat para lumitaw agad ang text pagkababa ng hero image */
+    padding: 0 0 100px 0; /* Burahin ang padding-top: 60px; */
     margin-top: 0 !important; 
     
-    /* Naglalagay tayo ng hininga sa taas para lumubog ang white border line */
-    padding-top: 60px; 
-    padding-bottom: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
 }
 
 .reveal-text{
@@ -1101,3 +1115,38 @@ html, body {
     filter: brightness(1.15);
 }
 
+/* HERO SUBTITLE */
+.hero-subtitle {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.6); /* Transparent white para hindi umagaw sa main title */
+    font-weight: 400;
+    max-width: 500px;
+    margin-top: 25px;
+    line-height: 1.6;
+}
+
+/* SCROLL INDICATOR ENGINE */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 10;
+}
+
+.scroll-indicator span {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.2em;
+    font-weight: 500;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-6px); }
+    60% { transform: translateY(-3px); }
+}
